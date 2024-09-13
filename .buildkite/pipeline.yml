@@ -60,7 +60,7 @@ steps:
       GIMME_GO_VERSION: 1.22.x
     plugins:
       docker-compose#v2.5.1:
-        run: app
+        run: docs
         workdir: /go/src/github.com/m3db/m3
       gopath-checkout#v1.0.1:
         import: github.com/m3db/m3
