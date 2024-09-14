@@ -8,7 +8,6 @@ services:
     volumes:
       - .:/go/src/github.com/m3db/m3
       - /usr/bin/buildkite-agent:/usr/bin/buildkite-agent
-      - /go/src:/go/src
       # Support running docker within docker. That is, buildkite jobs themselves run in a container; that container
       # needs to be able to spin up functioning docker containers.
       - /var/run/docker.sock:/var/run/docker.sock
