@@ -30,8 +30,7 @@ for i in "${GOPATH}/src/${PROTO_SRC}"/*; do
     resolve_protos="Mgoogle/protobuf/timestamp.proto=github.com/gogo/protobuf/types,Mgoogle/protobuf/wrappers.proto=github.com/gogo/protobuf/types,Mgoogle/protobuf/any.proto=github.com/gogo/protobuf/types,Mgoogle/protobuf/struct.proto=github.com/gogo/protobuf/types"
 
 		docker run --platform linux/amd64 --rm -w /src -v $GOPATH/src:/src -v ${m3db_path}:/src/github.com/m3db/m3 \
-		$UID_FLAGS $PROTOC_IMAGE_VERSION \
-		--entrypoint /bin/sh \
+		$UID_FLAGS --entrypoint /bin/sh $PROTOC_IMAGE_VERSION \
 		-c "ls -al /src/github.com/m3db/m3/src/x/generated/proto/test && \
 		protoc --gogofaster_out=${resolve_protos},plugins=grpc:/src \
 		-I/src -I/src/github.com/m3db/m3/vendor ${proto_files}"
